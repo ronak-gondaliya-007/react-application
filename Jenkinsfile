@@ -33,20 +33,20 @@ pipeline {
             }
         }
 
-        stage('Clean up') {
-            steps {
-                script {
-                    // Optional: Clean up old containers/images to save space
-                    bat "docker-compose -f docker-compose.yml down"
-                }
-            }
-        }
+        // stage('Clean up') {
+        //     steps {
+        //         script {
+        //             // Optional: Clean up old containers/images to save space
+        //             bat "docker-compose -f docker-compose.yml down"
+        //         }
+        //     }
+        // }
     }
 
-    post {
-        always {
-            // Clean up containers after each run (if not already done)
-            bat "docker-compose -f docker-compose.yml down"
-        }
-    }
+    // post {
+    //     always {
+    //         // Clean up containers after each run (if not already done)
+    //         bat "docker-compose -f docker-compose.yml down"
+    //     }
+    // }
 }
