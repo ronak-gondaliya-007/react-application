@@ -1,0 +1,22 @@
+#TODO: This is my old docker code start
+version: "3.9"
+services:
+  react-jenkins-container-app:
+    build:
+      context: .
+      target: developmet
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/vr-docker-react-jenkins-app
+      - /vr-docker-react-jenkins-app/node_modules
+      
+    command: ["npm", "run","dev"]
+    environment:
+      - NODE_ENV=developmet
+      - CHOKIDAR_USEPOLLING=true # Enables polling for file changes
+      - WATCHPACK_POLLING=true  # Ensures Watchpack (used by Webpack) uses polling
+      - HOST=0.0.0.0
+#my old docker code end here
+
+

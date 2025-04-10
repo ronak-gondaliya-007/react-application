@@ -1,21 +1,31 @@
-#TODO: This is my old docker code start
+# #TODO: This is my old docker code start
+# version: "3.8"
+# services:
+#   my-dockerize-react-app:
+#     build:
+#       context: .
+#     ports:
+#       - "5173:5173"
+#     volumes:
+#       - ./:/vr-docker-react-jenkins-app
+#       - /vr-docker-react-jenkins-app/node_modules
+      
+#     command: ["npm", "run","dev"]
+#     environment:
+#       - NODE_ENV=developmet
+#       - CHOKIDAR_USEPOLLING=true # Enables polling for file changes
+#       - WATCHPACK_POLLING=true  # Ensures Watchpack (used by Webpack) uses polling
+#       - HOST=0.0.0.0
+# #my old docker code end here
+
+
 version: "3.8"
 services:
-  my-dockerize-react-app:
+  react-app:
     build:
       context: .
+      target: production # Use the production target for deployment
     ports:
-      - "5173:5173"
-    volumes:
-      - ./:/vr-docker-react-jenkins-app
-      - /vr-docker-react-jenkins-app/node_modules
-      
-    command: ["npm", "run","dev"]
+      - "80:80" # Map port for the production server
     environment:
-      - NODE_ENV=developmet
-      - CHOKIDAR_USEPOLLING=true # Enables polling for file changes
-      - WATCHPACK_POLLING=true  # Ensures Watchpack (used by Webpack) uses polling
-      - HOST=0.0.0.0
-#my old docker code end here
-
-
+      - NODE_ENV=production
