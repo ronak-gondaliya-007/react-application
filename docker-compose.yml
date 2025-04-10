@@ -27,5 +27,6 @@ services:
       target: production # Use the production target for deployment
     ports:
       - "80:80" # Map port for the production server
+    restart: always
     environment:
       - NODE_ENV=production
