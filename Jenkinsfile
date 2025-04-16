@@ -19,7 +19,11 @@ pipeline {
         stage('Build Docker Image using Docker Compose') {
             steps {
                 script {
-                  bat 'docker-compose -f docker-compose.yml build'
+                  //TODO: for windows  
+                  //bat 'docker-compose -f docker-compose.yml build'
+
+                  //TODO: for linux
+                  sh 'docker-compose -f docker-compose.yml build'
                 }
             }
         }
@@ -28,7 +32,8 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container using Docker Compose
-                    bat "docker-compose -f docker-compose.yml up -d"
+                    //bat "docker-compose -f docker-compose.yml up -d"
+                    sh "docker-compose -f docker-compose.yml up -d"
                 }
             }
         }
