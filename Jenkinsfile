@@ -23,7 +23,7 @@ pipeline {
                   //bat 'docker-compose -f docker-compose.yml build'
 
                   //TODO: for linux
-                  sh 'docker-compose -f docker-compose.yml build'
+                  sh 'docker compose -f docker-compose.yml build'
                 }
             }
         }
@@ -31,9 +31,10 @@ pipeline {
         stage('Run Docker Container using Docker Compose') {
             steps {
                 script {
+                    //NOTE: docker compose v2 use docker compose instead of docker-copmpose
                     // Run the Docker container using Docker Compose
                     //bat "docker-compose -f docker-compose.yml up -d"
-                    sh "docker-compose -f docker-compose.yml up -d"
+                    sh "docker compose -f docker-compose.yml up -d"
                 }
             }
         }
